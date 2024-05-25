@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+       <h1 align="center">Add Product</h1>                                  
+                   <table border="1" align="center">                        
+                <form method="post" th:action="@{/products/savestudent}" th:object = "${product}">                                
+                                                                    
+                         <tr>                                               
+                           <td>Name</td>                                    
+                             <th><input type="text"  th:field="*{productName}"></th>
+                         </tr>                                              
+                                                                            
+                         <tr>                                               
+                            <td>Price</td>                                  
+                              <th><input type="number"  th:field="*{price}"></th>  
+                         </tr>                                              
+                                                                            
+                                                                            
+                         <tr>                                               
+                           <td>Description</td>                             
+                             <th><input type="text"  th:field="*{description}"></th>
+                          </tr>
+                          
+                           <tr>                                               
+                           <td>Manufacturer</td>                             
+                             <th><input type="text"  th:field="*{manufacturer}"></th>
+                          </tr>                                              
+                                                                            
+                           <tr>                                             
+                             <td><input type="submit" name="submit"></td>   
+                           </tr>                                            
+                                                                            
+                         </form>                                            
+                 </table>                                                   
+             </body> 
+      </html> 
+                         

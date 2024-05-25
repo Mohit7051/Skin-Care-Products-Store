@@ -1,0 +1,138 @@
+<!-- DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+             <table border = "2" align = "center">
+             
+             <tr>
+                 <th>Product Name</th>
+                 <th>Price</th>
+                 <th>Description</th>
+                 <th>Manufacturer</th>
+                 <th>Edit</th>
+                 <th>Delete</th>
+             </tr>
+             <tr th:each="product : ${products}">
+                  <td><a th:text = "${product.productName}"></td>
+                  <td><a th:text = "${product.price}"></td>
+                  <td><a th:text = "${product.description}"></td>
+                  <td><a th:text = "${product.manufacturer}"></td>
+                  <td><a th:href="@{/products/editproduct/{id}(id=${product.id})}">Edit</a></td>
+                   <td><a th:href="@{/products/{id}(id=${product.id})}">Delete</a></td>
+             </tr>
+             </table>
+</body>
+</html-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product List</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  th, td {
+    padding: 16px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  .product-image {
+    width: 100px;
+    height: auto;
+    vertical-align: middle;
+  }
+  .product-details {
+    display: flex;
+    align-items: center;
+  }
+  .product-info {
+    margin-left: 20px;
+  }
+  .product-name {
+    color: #007185;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .product-name:hover {
+    text-decoration: underline;
+  }
+  .action-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: #f0c14b;
+    color: #111;
+    border: 1px solid #a88734;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .action-button:hover {
+    background-color: #ddb347;
+  }
+</style>
+</head>
+<body>
+  <table border="1" align="center">
+    <tr>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Manufacturer</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr th:each="product : ${products}">
+      <td>
+        <div class="product-details">
+          <a th:href="@{/products/{id}(id=${product.id})}">
+            <!-- img class="https://m.media-amazon.com/images/I/31p7THhURwL._SX300_SY300_QL70_FMwebp_.jpg" th:src="${product.imageUrl}" alt="Product Image"-->
+          </a>
+          <div class="product-info">
+            <a class="product-name" th:text="${product.productName}" th:href="@{/products/{id}(id=${product.id})}"></a>
+          </div>
+        </div>
+      </td>
+      <td><span th:text="'₹' + ${product.price}"></span></td>
+      <td><span th:text="${product.description}"></span></td>
+      <td><span th:text="${product.manufacturer}"></span></td>
+      <td><a class="action-button" th:href="@{/products/editproduct/{id}(id=${product.id})}">Edit</a></td>
+      <td><a class="action-button" th:href="@{/products/{id}(id=${product.id})}">Delete</a></td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
+
+
